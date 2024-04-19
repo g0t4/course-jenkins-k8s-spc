@@ -16,8 +16,7 @@ podTemplate(
         stage('checkout') {
             sh 'pwd'
             sh 'ls -al'
-            // git branch: 'forked-start', url: 'https://github.com/g0t4/tmp-jenkins-k8s'
-            checkout scm
+            checkout scm // git branch: 'forked-start', url: 'https://github.com/g0t4/tmp-jenkins-k8s'
         }
         stage('build') {
             container('mavenz') {
@@ -29,6 +28,7 @@ podTemplate(
         stage('capture') {
             archiveArtifacts '**/target/*.jar'
             junit '**/target/surefire-reports/TEST*.xml'
+
             //jacoco() // https://plugins.jenkins.io/jacoco/
             recordCoverage tools: [[parser: 'JACOCO']] // https://plugins.jenkins.io/coverage/
         }
