@@ -1,4 +1,5 @@
-//properties([pipelineTriggers([pollSCM('* * * * *')])]) // poll every minute
+// properties([pipelineTriggers([pollSCM('* * * * *')])]) // poll every minute
+properties([pipelineTriggers([])]) // attempt remove polling
 
 podTemplate(
 
