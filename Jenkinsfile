@@ -26,7 +26,7 @@ volumes: [persistentVolumeClaim(claimName: 'maven-local-repo', mountPath: '/root
             archiveArtifacts '**/target/*.jar'
             junit '**/target/surefire-reports/TEST*.xml'
             //jacoco() // https://plugins.jenkins.io/jacoco/
-            recordCoverage(tools: [[parser: 'JACOCO']], id: 'jacoco', name: 'JaCoCo Coverage') // https://plugins.jenkins.io/coverage/
+            recordCoverage tools: [[parser: 'JACOCO']] // https://plugins.jenkins.io/coverage/
         }
     }
 }
