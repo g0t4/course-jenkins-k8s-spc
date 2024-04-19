@@ -14,8 +14,7 @@ podTemplate(
 ) {
     node(POD_LABEL) {
         stage('checkout') {
-            sh 'pwd'
-            sh 'ls -al'
+            sh 'pwd && ls -al'
             checkout scm // git branch: 'forked-start', url: 'https://github.com/g0t4/tmp-jenkins-k8s'
         }
         stage('build') {
