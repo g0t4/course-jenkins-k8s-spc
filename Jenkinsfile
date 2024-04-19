@@ -5,7 +5,7 @@ podTemplate(
         terminationGracePeriodSeconds: 5
     ''',
     containers: [
-        containerTemplate(name: 'mavenz', image: 'eclipse-temurin', command: 'sleep', args: 'infinity')
+        containerTemplate(name: 'jdk', image: 'eclipse-temurin', command: 'sleep', args: 'infinity')
     ],
     volumes: [
         persistentVolumeClaim(claimName: 'maven-local-repo', mountPath: '/root/.m2/repository')
@@ -18,7 +18,7 @@ podTemplate(
             checkout scm // git branch: 'forked-start', url: 'https://github.com/g0t4/tmp-jenkins-k8s'
         }
         stage('build') {
-            container('mavenz') {
+            container('jdk') {
                 sh 'ls -al /root/.m2/ || true'
                 sh 'env && ls -al'
                 sh './mvnw package'
