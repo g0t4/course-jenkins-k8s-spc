@@ -1,12 +1,16 @@
 podTemplate(
-yaml: '''
-spec:
-    terminationGracePeriodSeconds: 5
-''',
-containers: [
-  containerTemplate(name: 'mavenz', image: 'eclipse-temurin', command: 'sleep', args: 'infinity')
-],
-volumes: [persistentVolumeClaim(claimName: 'maven-local-repo', mountPath: '/root/.m2/repository')]
+
+    yaml: '''
+    spec:
+        terminationGracePeriodSeconds: 5
+    ''',
+    containers: [
+        containerTemplate(name: 'mavenz', image: 'eclipse-temurin', command: 'sleep', args: 'infinity')
+    ],
+    volumes: [
+        persistentVolumeClaim(claimName: 'maven-local-repo', mountPath: '/root/.m2/repository')
+    ]
+
 ) {
     node(POD_LABEL) {
         stage('checkout') {
