@@ -24,7 +24,7 @@ podTemplate(
             container('jdk') {
                 sh 'ls -al /root/.m2/ || true'
                 sh 'env && ls -al'
-                sh './mvnw package'
+                sh './mvnw package --batch-mode --no-transfer-progress'
             }
         }
         stage('capture') {
