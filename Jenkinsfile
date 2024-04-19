@@ -12,7 +12,8 @@ volumes: [persistentVolumeClaim(claimName: 'maven-local-repo', mountPath: '/root
         stage("checkout") {
             sh 'pwd'
             sh 'ls -al'
-            git branch: 'forked-start', url: 'https://github.com/g0t4/tmp-jenkins-k8s'
+            // git branch: 'forked-start', url: 'https://github.com/g0t4/tmp-jenkins-k8s'
+            checkout scm
         }
         stage("build") {
             container("mavenz"){
