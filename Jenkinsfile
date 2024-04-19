@@ -5,7 +5,7 @@ podTemplate(
         terminationGracePeriodSeconds: 5
     ''',
     containers: [
-        containerTemplate(name: 'jdk', image: 'eclipse-temurin', command: 'sleep', args: 'infinity')
+        containerTemplate(name: 'jdk', image: 'eclipse-temurin:21', command: 'sleep', args: 'infinity')
     ],
     volumes: [
         persistentVolumeClaim(claimName: 'maven-local-repo', mountPath: '/root/.m2/repository')
