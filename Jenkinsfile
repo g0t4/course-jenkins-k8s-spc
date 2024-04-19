@@ -18,9 +18,7 @@ volumes: [persistentVolumeClaim(claimName: 'maven-local-repo', mountPath: '/root
             container("mavenz"){
                 sh 'ls -al /root/.m2/ || true'
                 sh 'env && ls -al'
-                sh 'mvn -version'
-                sh label: 'mvn package', script: 'unset MAVEN_CONFIG && ./mvnw package'
-                // sleep 1000 // => kubectl exec -it pods/<TAB> # troubleshooting in live env
+                sh './mvnw package'
             }
         }
         stage("capture"){
